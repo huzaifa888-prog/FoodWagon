@@ -1,0 +1,879 @@
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      color: #222;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ========== COLORS & UTILS ========== */
+    :root {
+      --primary: #FF8C00;
+      /* orange */
+      --primary-dark: #E06400;
+      --muted: #6B6B6B;
+      --light: #f7f7f7;
+      --card: #fff;
+      --accent: #FFE9C6;
+      --black: #0b0b0b;
+    }
+
+    .center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ========== TOP NAV ========== */
+     /* ========== TOP NAV ========== */
+.topbar {
+  background: linear-gradient(90deg, #fff0d9 0%, #fff 100%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.topbar .bar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  /* Use space-between to push the three main items (Logo, Text, Buttons) to the edges */
+  justify-content: space-between; 
+  gap: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* New: Styles for the central delivery text */
+.delivery-info {
+    font-size: 14px;
+    color: var(--muted);
+    /* This will ensure it stays in the center */
+    flex-grow: 1; 
+    text-align: center;
+}
+.delivery-info strong {
+    color: var(--black); /* Make the address stand out */
+}
+
+
+/* New: Styles for the button container on the right */
+.top-actions {
+    display: flex;
+    gap: 8px; /* Gap between buttons */
+    align-items: center;
+}
+
+/* Original .top-links is now removed/deprecated based on the new HTML */
+/* /* Remove the following CSS block, it's no longer used in the new HTML structure: */
+.top-links {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  font-size: 14px;
+  color: var(--muted);
+}
+.top-links img {
+  height: 18px;
+  opacity: 0.8;
+}
+.btn-{
+       background: whitesmoke;
+      color: #424242;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+}
+.btn-2{
+       color: #E06400;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+}
+/* (Keep the existing .btn- styles) */
+/* ... existing .btn- styles ... */
+
+/* ========== RESPONSIVE ========== */
+/* Update the topbar media query to handle the new structure */
+@media (max-width:600px) {
+    .topbar .bar-inner {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    /* Center the info and set the buttons to take full width if needed */
+    .delivery-info, .top-actions {
+        width: 100%;
+        justify-content: center; /* Center buttons horizontally */
+    }
+    .top-actions {
+      flex-wrap: wrap; /* Allow buttons to wrap if screen is very small */
+    }
+    
+    /* The logo (.brand) will naturally be at the top and centered by default */
+}
+
+@media (max-width: 850px) {
+    /* Optional: Hide delivery info on slightly smaller screens if space is limited */
+    /* .delivery-info { display: none; } */
+}
+
+    /* ========== HERO ========== */
+    .hero {
+      width: 100%;
+      /* background: linear-gradient(180deg, #ffd66a 0%, #ffb74d 45%, #ffb74d 55%); */
+      position: relative;
+      background: url(./assists/bg.png);
+      padding: 64px 0 48px;
+      overflow: hidden;
+    }
+
+    .hero .container {
+      display: grid;
+      grid-template-columns: 1fr 480px;
+      align-items: center;
+      gap: 40px;
+      max-width: 1400px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      color: #fff;
+      margin-bottom: 12px;
+      line-height: 1;
+    }
+
+    .hero p {
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 18px;
+      margin-bottom: 22px;
+      max-width: 640px;
+    }
+
+    /* search card */
+    .search-card {
+      background: #fff;
+      padding: 18px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      width: 100%;
+    }
+
+    .mode-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .mode {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: 1px solid #eee;
+      background: #fbfbfb;
+      font-weight: 700;
+    }
+
+    .mode.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .addr-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .addr-input {
+      flex: 1;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid #f0f0f0;
+      background: #fff;
+    }
+
+    .addr-input input {
+      border: none;
+      outline: none;
+      font-size: 15px;
+      width: 100%;
+    }
+
+    .find-btn {
+      background: var(--primary);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .hero-plate {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-plate img {
+      width: 420px;
+      max-width: 100%;
+      transform: translateY(-8px);
+    }
+
+    /* flash deals */
+    .flash-row {
+      /* background: #000;*/
+      background-color: #fff4e1;
+      padding: 28px 0;
+      margin-top: -28px;
+    }
+
+    .flash-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .deal {
+      background: var(--card);
+      border-radius: 10px;
+      width: 220px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .deal .img-wrap {
+      position: relative;
+      width: 100%;
+      height: 140px;
+      overflow: hidden;
+    }
+
+    .deal .img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .badge {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      background: var(--primary);
+      color: #fff;
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-weight: 800;
+    }
+
+    .deal .meta {
+      padding: 12px;
+      background: #eee;
+      color: black;
+      text-align: center;
+    }
+
+    .deal .meta .rest {
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .deal .meta .cta {
+      background: var(--primary-dark);
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      display: inline-block;
+      font-weight: 700;
+      margin-top: 8px;
+    }
+
+    /* how it works */
+    .how {
+      padding: 48px 0;
+      background: linear-gradient(180deg,
+          rgba(255, 206, 103, 0.22) -42.47%,
+          rgba(253, 237, 202, 0) 100%);
+    }
+
+    .how .container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .how-card {
+      background: transparent;
+      text-align: center;
+      padding: 10px 12px;
+    }
+
+    .how-card .icon {
+      width: 72px;
+      height: 72px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px;
+
+    }
+
+    .how-card p {
+      color: var(--muted);
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    /* popular carousel (static row) */
+    .popular {
+      padding: 30px 0;
+      background: #fff;
+    }
+
+    .popular .strip {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      padding: 8px 0;
+      align-items: center;
+    }
+
+    .popular-card {
+      min-width: 200px;
+      /* background: wheat; */
+      /* color: #fff; */
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .popular-card img {
+      height: 140px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .popular-card .body {
+      padding: 10px;
+      text-align: center;
+      background: #eee;
+      color: #0b0b0b;
+    }
+
+    /* featured restaurants */
+    .featured {
+      padding: 30px 0;
+      /* background: #0b0b0b; */
+      color: #fff;
+    }
+
+    .featured .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .featured-card {
+      /* background: #111; */
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    .featured-card .img {
+      height: 170px;
+      background: #333;
+
+    }
+
+    .featured-card .info {
+      padding: 12px;
+    }
+
+    .btn {
+      background: var(--primary);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* text center me rakhta hai */
+      gap: 10px;
+      position: relative;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 6px 8px;
+      border-radius: 8px;
+      font-weight: 700;
+      margin-right: 8px;
+      font-size: 13px;
+      background: #222;
+      color: #fff;
+    }
+
+    /* search by food */
+    .byfood {
+      padding: 40px 0;
+      background: #fff;
+    }
+
+    .byfood .row {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .food-pill {
+      width: 88px;
+      text-align: center;
+    }
+
+    .food-pill img {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 8px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .three-box {
+      display: flex;
+      justify-content: space-between;
+      gap: 25px;
+      background: #fff;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.12);
+      /* picture जैसा soft shadow */
+      margin-bottom: 40px;
+    }
+
+    .three-box .item {
+      text-align: center;
+    }
+
+    .three-box img {
+      width: 85px;
+      margin-bottom: 10px;
+    }
+
+    .three-box h3 {
+      font-size: 18px;
+      color: #d87f00;
+      /* picture जैसा orange-yellow */
+      margin: 0;
+    }
+
+
+
+    /* ---------------- TOP BOX ---------------- */
+    .top-box {
+      display: flex;
+      justify-content: space-between;
+      background: white;
+      padding: 20px 30px;
+      border-radius: 30px;
+      width: 80%;
+      margin: auto;
+      box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .feature img {
+      width: 50px;
+      /* small like your picture */
+    }
+
+    .feature span {
+      color: #d47a00;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+
+    .install-section {
+      display: flex;
+      justify-content: space-between;
+      width: 80%;
+      margin: 40px auto;
+      align-items: center;
+      /* vertical alignment improve karne ke liye */
+      gap: 20px;
+      /* thoda gap left-right elements ke liye */
+    }
+
+    .mobile-box img {
+      width: 700px;
+      /* chhoti kar di 500px se 300px */
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* RIGHT SIDE */
+    .right-content {
+      width: 50%;
+      /* thoda adjust */
+    }
+
+    .right-content h2 {
+      color: #f1ad00;
+      font-size: 34px;
+      margin-bottom: 5px;
+      /* paragraph ke saath gap kam kar diya */
+    }
+
+    .right-content p {
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    /* STORE BUTTONS */
+    .store-buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .store {
+      width: 160px;
+    }
+
+
+    /* promo stacked cards */
+    .promo-stack {
+      padding: 36px 0;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .promo {
+      width: 100%;
+      max-width: 1100px;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      gap: 18px;
+      background: #fff;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.09);
+    }
+
+    .promo img {
+      width: 50%;
+      object-fit: cover;
+    }
+
+    .promo .txt {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    /* CTA banner */
+    .cta-banner {
+      /* background: linear-gradient(90deg, #ffcc70 0%, #ffb14d 100%); */
+      padding: 34px 0;
+      width: 100%fit-content;
+      /* 1920px ki jagah 100% rakhna responsive ke liye */
+      height: 400px;
+      background-image: url('./assists/4th image.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      /* ye image ko container me fit kar dega */
+      background-position: center;
+      /* center me align karega */
+      text-align: center;
+      color: #111;
+      margin-top: 18px;
+    }
+
+    .footer {
+      background: linear-gradient(#0d0d0f, #1b1c1f);
+      padding: 40px 60px;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    /* TOP CITIES */
+    .top-cities h3 {
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+
+    .cities-grid {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .cities-grid ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .cities-grid li {
+      margin: 5px 0;
+      color: #ccc;
+    }
+
+    /* LINE */
+    .footer hr {
+      border: 0.5px solid #333;
+      margin: 30px 0;
+    }
+
+    /* BOTTOM FOOTER */
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .footer-bottom .col h4 {
+      margin-bottom: 10px;
+    }
+
+    .footer-bottom .col p {
+      margin: 5px 0;
+      color: #bbb;
+    }
+
+    /* SOCIAL + INPUT SECTION */
+    .icons {
+      display: flex;
+      gap: 10px;
+      /* icons ke beech thoda gap */
+      justify-content: center;
+    }
+
+    .icons i img {
+      width: 40px;
+      /* icon size */
+      height: 40px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .icons i:hover img {
+      transform: scale(1.2);
+      /* hover pe thoda bada ho */
+    }
+
+
+    .subscribe {
+      margin-top: 10px;
+      display: flex;
+    }
+
+    .subscribe input {
+      padding: 8px;
+      border: none;
+      width: 180px;
+      border-radius: 5px 0 0 5px;
+    }
+
+    .subscribe button {
+      padding: 8px 15px;
+      background: #f7b500;
+      border: none;
+      color: black;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+    }
+
+    /* COPYRIGHT */
+    .copy {
+      margin-top: 25px;
+      text-align: center;
+      color: #888;
+    }
+/* ========== RESPONSIVE ========== */
+        @media (max-width:1100px) {
+            .hero .container {
+                grid-template-columns: 1fr 360px;
+                padding: 0 20px;
+            }
+
+            .featured .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width:850px) {
+            .install-section {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .mobile-box, .right-content {
+                width: 100%;
+            }
+
+            .mobile-box img {
+                margin: 0 auto;
+            }
+
+            .store-buttons {
+                justify-content: center;
+            }
+
+            .promo {
+                flex-direction: column;
+                max-width: 95%;
+            }
+
+            .promo img, .promo .txt {
+                width: 100%;
+                height: auto;
+            }
+
+            /* Reverse order for second promo card */
+            .promo:nth-child(2) {
+                flex-direction: column-reverse;
+            }
+
+            .cities-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-bottom {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width:600px) {
+            .topbar .bar-inner {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .top-links {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .hero-plate img {
+                width: 90%;
+                margin: 0 auto;
+                transform: none;
+            }
+
+            .how .container {
+                grid-template-columns: 1fr;
+            }
+
+            .top-box {
+                flex-direction: column;
+                width: 95%;
+                gap: 20px;
+            }
+            .top-box .feature {
+                justify-content: center;
+            }
+            
+            .featured .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cities-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer {
+                padding: 30px 20px;
+            }
+
+            .subscribe {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .subscribe input, .subscribe button {
+                width: 100%;
+                border-radius: 5px;
+                margin-top: 10px;
+            }
+            .subscribe input {
+                margin-top: 0;
+            }
+        }
